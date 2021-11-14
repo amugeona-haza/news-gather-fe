@@ -2,7 +2,6 @@ import vuex, { Commit } from 'vuex'
 import { Nullable } from '@/types/base'
 import { KakaoResponse, KakaoUser } from '@/types/kakao'
 import { useKakao } from 'vue3-kakao-sdk'
-import { stat } from 'fs'
 
 const { kakao } = useKakao()
 
@@ -26,11 +25,17 @@ export default {
     isAuthenticated: false
   }),
   mutations: {
-    setUser (state: State, user: KakaoUser) {
+    SET_USER (state: State, user: KakaoUser) {
       state.user.nickName = user.nickname
       state.user.profileImage = user.profile_image
       state.user.thumbnailImage = user.thumbnail_image
       state.isAuthenticated = true
+    },
+    LOGOUT (state: State) {
+      state.user.nickName = null
+      state.user.profileImage = null
+      state.user.thumbnailImage = null
+      state.isAuthenticated = false
     }
   },
   actions: {
@@ -39,7 +44,7 @@ export default {
         kakao.value.API.request({
           url: '/v2/user/me',
           success (success) {
-            commit('setUser', success.properties)
+            commit('SET_USER', success.properties)
             resolve(success.properties)
           },
           fail (error) {
@@ -47,6 +52,9 @@ export default {
           }
         })
       })
+    },
+    logout ({ commit }: { commit: Commit }) {
+      commit('LOGOUT')
     }
   },
   getters: {

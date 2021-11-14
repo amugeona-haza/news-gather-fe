@@ -3,6 +3,7 @@ import { createWebHistory, createRouter, RouteRecordRaw } from 'vue-router'
 import DefaultLayout from '@/layouts/Default.vue'
 import AuthLayout from '@/layouts/Auth.vue'
 import Home from '@/pages/Home.vue'
+import Setting from '@/pages/Setting.vue'
 import Login from '@/pages/Auth/Login.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -13,7 +14,13 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: Home
+        component: Home,
+        meta: { title: '홈' }
+      },
+      {
+        path: 'Setting',
+        component: Setting,
+        meta: { title: 'Setting' }
       }
     ]
   },
