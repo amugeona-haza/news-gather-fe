@@ -11,7 +11,7 @@
         <strong>뉴스레터 구독</strong> 서비스
       </p>
       <p>
-        <span class="font-bold text-indigo-600">News Gather</span>
+        <span class="font-bold text-indigo-600 text-4xl">News Gather</span>
       </p>
     </section>
     <section
@@ -35,14 +35,15 @@
 </script>
 
 <script lang="ts" setup>
-import Kakao, { useKakao } from 'vue3-kakao-sdk'
+import { useKakao } from 'vue3-kakao-sdk'
 import { useStore } from 'vuex'
-import { computed, onMounted, reactive, Ref, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { computed, reactive, ref, onMounted } from 'vue'
 import useCalculateContainerHeight from '@/hooks/useCalculateContainerHeight'
-import axios from 'axios'
 
 const { kakao, initialize } = useKakao()
 const store = useStore()
+const router = useRouter()
 
 const loginButton = ref()
 const container = ref<HTMLElement>()
@@ -60,13 +61,9 @@ onMounted(async () => {
     async success (success) {
       const { access_token: accessToken } = success
       kakao.value.Auth.setAccessToken(accessToken)
-
-      kakao.value.API.request({
-        url: '/v2/user/me',
-        success (zxc) {
-          console.log(zxc)
-        }
-      })
+      localStorage.setItem('KAKAO_ACCESS_TOKEN', accessToken)
+      await store.dispatch('auth/fetchKakaoUser')
+      router.push('/')
     },
     fail (error) {
       console.error(error)
