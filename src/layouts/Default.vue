@@ -1,6 +1,9 @@
 <template>
   <main v-if="show" class="container mx-auto max-w-xl">
-    <app-bar />
+    <app-bar
+      class="sticky top-0 left-0 right-0 bg-white z-10 transition-shadow"
+      :class="isScrolled ? 'shadow-lg' : ''"
+    />
     <router-view />
   </main>
   <div
@@ -18,8 +21,10 @@
 <script lang="ts" setup>
 import useAuth from '@/hooks/useAuth'
 import AppBar from '@/components/organisms/AppBar.vue'
+import useScrollObserver from '@/hooks/useScrollObserver'
 
 const { show } = useAuth()
+const { isScrolled } = useScrollObserver()
 // const show = false
 </script>
 

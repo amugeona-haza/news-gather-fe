@@ -5,6 +5,7 @@ import AuthLayout from '@/layouts/Auth.vue'
 import Home from '@/pages/Home.vue'
 import Setting from '@/pages/Setting.vue'
 import Login from '@/pages/Auth/Login.vue'
+import KeywordPage from '@/pages/_Keyword.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -21,6 +22,10 @@ const routes: RouteRecordRaw[] = [
         path: 'Setting',
         component: Setting,
         meta: { title: 'Setting' }
+      },
+      {
+        path: '/Keyword/:id',
+        component: KeywordPage
       }
     ]
   },
