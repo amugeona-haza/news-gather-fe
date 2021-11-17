@@ -2855,10 +2855,10 @@ vue-tsc@^0.3.0:
   dependencies:
     vscode-vue-languageservice "^0.27.0"
 
-vue3-kakao-sdk@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/vue3-kakao-sdk/-/vue3-kakao-sdk-0.0.5.tgz#4f6060bd5c05be8a91bd582b3de4d0badad70e52"
-  integrity sha512-3hc1rpV/wv0oYMHh4rLNkYxJoITBMllLARcG3VlyRDEle9xjF0pIzlgvNBf05eMXZb+aesnE+CaQLXarPnmpJQ==
+vue3-kakao-sdk@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vue3-kakao-sdk/-/vue3-kakao-sdk-0.1.2.tgz#5c54cf5efd0644248590101e105454c1a91d54ee"
+  integrity sha512-6lP9Pf4+DN/4Ep3iJQubbklOc+RGG3YHPDi0oU9gsdOsqmQMFDAi3O4atr+ylwB1dnEL7NeJfYcH64stSDiwnQ==
 
 vue@^3.2.16:
   version "3.2.21"
