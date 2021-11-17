@@ -2,12 +2,13 @@
   <template v-if="show">
     <div class="relative mx-auto max-w-xl">
       <app-bar
-          class="sticky top-0 left-0 right-0 bg-white z-10 transition-shadow"
-          :class="isScrolled ? 'shadow-lg' : ''"
+        class="sticky top-0 left-0 right-0 bg-white z-10 transition-shadow"
+        :class="isScrolled ? 'shadow-lg' : ''"
       />
       <main>
         <router-view />
       </main>
+      <BottomNavigation />
     </div>
   </template>
   <template v-else>
@@ -24,6 +25,7 @@
 <script lang="ts" setup>
 import useAuth from '@/hooks/useAuth'
 import AppBar from '@/components/organisms/AppBar.vue'
+import BottomNavigation from '@/components/organisms/BottomNavigation.vue'
 import useScrollObserver from '@/hooks/useScrollObserver'
 
 const { show } = useAuth()
